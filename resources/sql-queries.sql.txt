@@ -1,0 +1,31 @@
+CREATE DATABASE api_security_db;
+
+USE api_security_db;
+
+GRANT ALL ON api_security_db.* TO 'springuser'@'%';
+
+CREATE TABLE USERS (
+	USERNAME VARCHAR(128) PRIMARY KEY,
+    PASSWORD VARCHAR(128) NOT NULL,
+    ENABLED CHAR(1) NOT NULL CHECK (ENABLED IN ('Y','N')) 
+);
+
+INSERT INTO `api_security_db`.`users`
+(`USERNAME`,
+`PASSWORD`,
+`ENABLED`)
+VALUES
+("user1",
+"$2y$12$3A3.IDhuqC60GFtV66Rlb.PDsMc.xLXc.HaFeV5M5a7c2dCpT7McS",
+'Y');
+
+INSERT INTO `api_security_db`.`users`
+(`USERNAME`,
+`PASSWORD`,
+`ENABLED`)
+VALUES
+("admin",
+"$2y$12$BgtazkWd0UiQOzOyA3W9p.UEcd70PYpbfkeAZUktjF5BbvW6K5Qm6",
+'Y');
+
+
