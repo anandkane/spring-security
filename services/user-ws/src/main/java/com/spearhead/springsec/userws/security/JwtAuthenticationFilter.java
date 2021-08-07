@@ -16,7 +16,9 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilter {
 
@@ -43,7 +45,11 @@ public class JwtAuthenticationFilter extends UsernamePasswordAuthenticationFilte
     protected void successfulAuthentication(HttpServletRequest request, HttpServletResponse response, FilterChain chain,
                                             Authentication authResult) {
         UserDetails principal = (UserDetails) authResult.getPrincipal();
-        String token = JWT.create().withSubject(principal.getUsername()).withExpiresAt(new Date(System.currentTimeMillis() + (30 * 60 * 1000)))
+        List<String> roles = principal.getAuthorities().stream().map(grantedAuthority -> grantedAuthority.getAuthority())
+                .collect(Collectors.toList());
+        String token = JWT.create().withSubject(principal.getUsername())
+                .withExpiresAt(new Date(System.currentTimeMillis() + (30 * 60 * 1000)))
+                .withArrayClaim("roles", roles.toArray(new String[0]))
                 .sign(Algorithm.HMAC512("mysecret"));
 
         response.setHeader("Authorization", "Bearer " + token);

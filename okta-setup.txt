@@ -1,0 +1,71 @@
+
+login to okta and add application
+
+Go to Applications > Applications
+Client 'Create App Integration' button
+
+Use following details to create application integration
+
+Sign-in redirect URIs 
+https://localhost:9090/authorization-code/callback
+https://www.getpostman.com/oauth2/callback
+https://localhost:9091/authorization-code/callback
+Sign-out redirect URIs 
+https://localhost:9090
+Login initiated by App Only
+Initiate login URI 
+https://localhost:9090/v1/login
+
+
+
+client id and secret after adding user-ws application
+
+0oa1ec2wh3xkWhHhN5d7
+3nAypSZjbBU_HQIQRjxV0mRsitG68jmi8bkzXGjr
+
+
+domain
+
+dev-35030395.okta.com
+
+properties to be set in application.properties
+
+okta.oauth2.client-id=0oa1ec2wh3xkWhHhN5d7
+okta.oauth2.client-secret=3nAypSZjbBU_HQIQRjxV0mRsitG68jmi8bkzXGjr
+okta.oauth2.issuer=https://dev-35030395.okta.com/oauth2/default
+okta.oauth2.redirect-uri=/authorization-code/callback
+okta.oauth2.scopes=openid, profile, email, groups
+
+Endpoint to list/delete grants
+https://dev-35030395.okta.com/api/v1/users/00u1e4al53gqPqf1j5d7/grants
+
+token to be used for authorization for above endpoint
+00Vp5-_cen8CIt6voD2k0dEauXtG__1I42rzECAKhA
+SSWS 00Vp5-_cen8CIt6voD2k0dEauXtG__1I42rzECAKhA
+
+
+How to get groups in access token
+- Go to Security > API
+- Select the authorization server (default)
+- Go to 'Scopes' tab
+- Add scope 'groups'. Do not forget to check 'Include in metadata'
+
+- Go to Claims tab.
+- Add claim named 'groups'
+	- Include in token type = Access Token
+	- Value type = Groups
+	- Filter = Match regex .*
+	- Include in 'Any scopes'
+
+properties to be set in postman for getting oauth2 tokens
+Token Name					token1
+Grant Type				
+Callback URL				https://www.getpostman.com/oauth2/callback
+Authorize using browser
+Auth URL						https://dev-35030395.okta.com/oauth2/default/v1/authorize
+Access Token URL		https://dev-35030395.okta.com/oauth2/default/v1/token
+Client ID						0oa1ec2wh3xkWhHhN5d7
+Client Secret					3nAypSZjbBU_HQIQRjxV0mRsitG68jmi8bkzXGjr
+Scope							openid
+State							mystate
+Client Authentication
