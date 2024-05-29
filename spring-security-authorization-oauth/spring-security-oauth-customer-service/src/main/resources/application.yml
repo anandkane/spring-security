@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-security-oauth-customer-service
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:10101/realms/opussecurity
+#          jwk-set-uri: http://localhost:10101/realms/opussecurity/protocol/openid-connect/certs
+server:
+  port: 9090
+logging:
+  level:
+    org.springframework.security: trace

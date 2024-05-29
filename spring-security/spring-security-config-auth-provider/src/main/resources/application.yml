@@ -1,0 +1,9 @@
+spring:
+  application:
+    name: spring-security-config-auth-provider
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace

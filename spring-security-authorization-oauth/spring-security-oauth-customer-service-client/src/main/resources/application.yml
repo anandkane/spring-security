@@ -1,0 +1,14 @@
+spring:
+  jackson:
+    property-naming-strategy: SNAKE_CASE
+  application:
+    name: spring-security-oauth-customer-service-client
+
+server:
+  port: 6060
+logging:
+  level:
+    org:
+      springframework:
+        web:
+          client: trace

@@ -1,0 +1,14 @@
+spring:
+  application:
+    name: spring-security-authorization
+
+server:
+  error:
+    include-stacktrace: never
+    include-exception: false
+
+logging:
+  level:
+    org:
+      springframework:
+        security: trace
