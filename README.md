@@ -1,9 +1,10 @@
 # spring-security
 Experiment with spring security and it's integration with OAuth2
 
-## OAuth2: For experimentation with OAuth2, the services point to the local keycloak-24.0.3 server.
+## OAuth2:
+For experimentation with OAuth2, the services point to the local keycloak-24.0.3 server.
 
-## Below is the list of services and one-line description of each service:
+## Below is the list of services and their brief descriptions,
 **./spring-security:** Spring security without OAuth2
 <br>**./spring-security/spring-security-minimal:** Spring security with minimal configuration to demonstrate use of Spring Security and configuration of username and password.
 <br>**./spring-security/spring-security-config-user-service:** Configuration of custom user service.
